@@ -7,6 +7,10 @@ resource "aws_instance" "frontend" {
   }
 }
 
+output "frontend" {
+  value = aws_instance.frontend.public_ip
+}
+
 resource "aws_instance" "cart" {
   ami           = "ami-0bb6af715826253bf"
   instance_type = "t3.micro"
