@@ -15,7 +15,7 @@ resource "aws_instance" "frontend" {
 
 resource "aws_route53_record" "frontend" {
   zone_id = "Z013923922XABW4K0OEK0"
-  name    = "frontend-dev.naginfo.us"
+  name    = "frontend.dev.naginfo.us"
   type    = "A"
   ttl     = 30
   records = [aws_instance.frontend.private_ip]
@@ -32,7 +32,7 @@ resource "aws_instance" "cart" {
 
 resource "aws_route53_record" "cart" {
   zone_id = "Z013923922XABW4K0OEK0"
-  name    = "cart-dev.naginfo.us"
+  name    = "cart.dev.naginfo.us"
   type    = "A"
   ttl     = 30
   records = [aws_instance.cart.private_ip]
@@ -49,7 +49,7 @@ resource "aws_instance" "mongodb" {
 
 resource "aws_route53_record" "mongodb" {
   zone_id = "Z013923922XABW4K0OEK0"
-  name    = "mongodb-dev.naginfo.us"
+  name    = "mongodb.dev.naginfo.us"
   type    = "A"
   ttl     = 30
   records = [aws_instance.mongodb.private_ip]
@@ -66,7 +66,7 @@ resource "aws_instance" "catalogue" {
 
 resource "aws_route53_record" "catalogue" {
   zone_id = "Z013923922XABW4K0OEK0"
-  name    = "catalogue-dev.naginfo.us"
+  name    = "catalogue.dev.naginfo.us"
   type    = "A"
   ttl     = 30
   records = [aws_instance.catalogue.private_ip]
@@ -83,7 +83,7 @@ resource "aws_instance" "redis" {
 
 resource "aws_route53_record" "redis" {
   zone_id = "Z013923922XABW4K0OEK0"
-  name    = "redis-dev.naginfo.us"
+  name    = "redis.dev.naginfo.us"
   type    = "A"
   ttl     = 30
   records = [aws_instance.redis.private_ip]
@@ -100,7 +100,7 @@ resource "aws_instance" "user" {
 
 resource "aws_route53_record" "user" {
   zone_id = "Z013923922XABW4K0OEK0"
-  name    = "user-dev.naginfo.us"
+  name    = "user.dev.naginfo.us"
   type    = "A"
   ttl     = 30
   records = [aws_instance.user.private_ip]
@@ -117,7 +117,7 @@ resource "aws_instance" "mysql" {
 
 resource "aws_route53_record" "mysql" {
   zone_id = "Z013923922XABW4K0OEK0"
-  name    = "mysql-dev.naginfo.us"
+  name    = "mysql.dev.naginfo.us"
   type    = "A"
   ttl     = 30
   records = [aws_instance.mysql.private_ip]
@@ -134,7 +134,7 @@ resource "aws_instance" "shipping" {
 
 resource "aws_route53_record" "shipping" {
   zone_id = "Z013923922XABW4K0OEK0"
-  name    = "shipping-dev.naginfo.us"
+  name    = "shipping.dev.naginfo.us"
   type    = "A"
   ttl     = 30
   records = [aws_instance.shipping.private_ip]
@@ -151,7 +151,7 @@ resource "aws_instance" "rabbitmq" {
 
 resource "aws_route53_record" "rabbitmq" {
   zone_id = "Z013923922XABW4K0OEK0"
-  name    = "rabbitmq-dev.naginfo.us"
+  name    = "rabbitmq.dev.naginfo.us"
   type    = "A"
   ttl     = 30
   records = [aws_instance.rabbitmq.private_ip]
@@ -168,7 +168,7 @@ resource "aws_instance" "payment" {
 
 resource "aws_route53_record" "payment" {
   zone_id = "Z013923922XABW4K0OEK0"
-  name    = "payment-dev.naginfo.us"
+  name    = "payment.dev.naginfo.us"
   type    = "A"
   ttl     = 30
   records = [aws_instance.payment.private_ip]
