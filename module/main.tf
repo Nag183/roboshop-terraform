@@ -4,29 +4,30 @@ resource "aws_instance" "instance" {
   vpc_security_group_ids = [data.aws_security_group.allow-all.id]
 
   tags = {
-    Name = var.component_name
+    Name = local.name
   }
 }
 
-  resource "null_resource" "provisioner" {
-    depends_on   = [aws_instance.instance, aws_route53_record.records]
-    provisioner "remote-exec" {
+resource "null_resource" "provisioner" {
 
-      connection {
-        type     = "ssh"
-        user     = "centos"
-        password = "DevOps321"
-        host     = aws_instance.instance.private_ip
-      }
+  depends_on   = [aws_instance.instance, aws_route53_record.records]
+  provisioner "remote-exec" {
 
-      inline = [
-        "rm-rf roboshop-shell",
-        "git clone https://github.com/Nag183/roboshop-shell",
-        "cd roboshop-shell",
-        "sudo bash ${var.component_name}.sh ${var.password}"
-      ]
+    connection {
+      type     = "ssh"
+      user     = "centos"
+      password = "DevOps321"
+      host     = aws_instance.instance.private_ip
     }
+
+    inline = [
+      "rm-rf roboshop-shell",
+      "git clone https://github.com/Nag183/roboshop-shell",
+      "cd roboshop-shell",
+      "sudo bash ${var.component_name}.sh ${var.password}"
+    ]
   }
+}
 
 
 resource "aws_route53_record" "records" {
