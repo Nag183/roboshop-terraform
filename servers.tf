@@ -26,7 +26,7 @@ resource "aws_instance" "instance" {
         "rm-rf roboshop-shell",
         "git clone https://github.com/Nag183/roboshop-shell",
         "cd roboshop-shell",
-        "sudo bash ${each.value["name"]}.sh ${each.value["password"]}"
+        "sudo bash ${each.value["name"]}.sh ${lookup(each.value, "password", "null") }"
       ]
     }
   }
