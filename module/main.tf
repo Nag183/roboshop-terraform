@@ -1,5 +1,4 @@
 resource "aws_instance" "instance" {
-  for_each               = var.component
   ami                    = data.aws_ami.centos.image_id
   instance_type          = var.instance_type
   vpc_security_group_ids = [data.aws_security_group.allow-all.id]
