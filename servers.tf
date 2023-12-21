@@ -7,27 +7,32 @@ resource "aws_instance" "instance" {
   tags = {
     Name = each.value["name"]
   }
-
-  provisioner "remote-exec" {
-
-    connection {
-      type     = "ssh"
-      user     = "centos"
-      password = "DevOps321"
-      host     = self.private_ip
-    }
-
-    inline = [
-      "rm-rf roboshop-shell",
-      "git clone https://github.com/Nag183/roboshop-shell",
-      "cd roboshop-shell",
-      "sudo bash ${each.value["name"]}.sh"
-    ]
-  }
 }
 
+  resource "null_resource" "provisioner" {
 
-resource "aws_route53_record" "frontend" {
+    depends_on   = [aws_instance.instance, aws_route53_record.records]
+    for_each     = var.components
+    provisioner "remote-exec" {
+
+      connection {
+        type     = "ssh"
+        user     = "centos"
+        password = "DevOps321"
+        host     = aws_instance.instance[each.value["name"]].private_ip
+      }
+
+      inline = [
+        "rm-rf roboshop-shell",
+        "git clone https://github.com/Nag183/roboshop-shell",
+        "cd roboshop-shell",
+        "sudo bash ${each.value["name"]}.sh"
+      ]
+    }
+  }
+
+
+resource "aws_route53_record" "records" {
   for_each = var.components
   zone_id  = "Z013923922XABW4K0OEK0"
   name     = "${each.value["name"]}.dev.naginfo.us"
