@@ -15,6 +15,14 @@ components = {
     name          = "redis"
     instance_type = "t3.small"
   }
+  user = {
+    name          = "user"
+    instance_type = "t3.micro"
+  }
+  cart = {
+    name          = "cart"
+    instance_type = "t3.micro"
+  }
   mysql = {
     name          = "mysql"
     instance_type = "t3.small"
@@ -29,14 +37,6 @@ components = {
     name          = "payment"
     instance_type = "t3.small"
     password  = "roboshop123"
-  }
-  user = {
-    name          = "user"
-    instance_type = "t3.micro"
-  }
-  cart = {
-    name          = "cart"
-    instance_type = "t3.micro"
   }
   rabbitmq = {
     name          = "rabbitmq"
